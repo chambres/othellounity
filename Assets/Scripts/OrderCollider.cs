@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class OrderCollider : MonoBehaviour
+{
+    public float radius;
+ 
+	 public Collider2D objectCollider;
+	 public Collider2D anotherCollider;
+	 
+	 
+	 
+	 // public List<GameObject> SomeMethod(float r, Vector3 x)
+	 // {
+		 // radius = r;
+		 // this.transform.position = x;
+		 
+		 
+		
+		// return final;
+		 
+	 // }
+	 
+	
+	
+
+}
