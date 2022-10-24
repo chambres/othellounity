@@ -52,9 +52,7 @@ public class BoardManager : MonoBehaviour
 	public bool validPosition(int x, int y){
 		return (x >= 0 && y >= 0 && x < 8 && y < 8);
 	}
-	
-
-	
+		
 	public color getOppositeColor(color a){
 		if(a == color.white){	
 			return color.black;	
@@ -122,15 +120,9 @@ public class BoardManager : MonoBehaviour
 			}
 			if (isValid)//break;
 				continue;
-		}
-		
-
-		
-		
+		}	
 		return isValid;
-	}
-
-	
+	}	
 	public bool isValidMove(color c, int row, int col, Vector3 loc) {
 		affectedMovesX.Clear();
 		affectedMovesY.Clear();
@@ -180,19 +172,63 @@ public class BoardManager : MonoBehaviour
 	public void playSound(){
 		flipSound.Play();
 	}
+
+	bool blackValid;
+	bool whiteValid;
+
 	public bool validMovesLeft(){
-		for(int i = 0; i < board.Count; i++){
-			for(int j = 0; j < board.Count; j++){
-				if(isValidMove(color.black, i, j) || isValidMove(color.white, i, j)){
+		bool blackV = false;
+		bool whiteV = false;
+		for (int i = 0; i < board.Count; i++)
+		{
+			for (int j = 0; j < board.Count; j++)
+			{
+				if (isValidMove(color.black, i, j) || isValidMove(color.white, i, j))
+				{
 					return false;
 				}
-					
 			}
 		}
-		
+
 		return true;
 	}
-	
+
+	public bool validBlack()
+	{
+		bool blackV = false;
+		bool whiteV = false;
+		for (int i = 0; i < board.Count; i++)
+		{
+			for (int j = 0; j < board.Count; j++)
+			{
+				if (isValidMove(color.black, i, j) || isValidMove(color.white, i, j))
+				{
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	public bool validRight()
+	{
+		bool blackV = false;
+		bool whiteV = false;
+		for (int i = 0; i < board.Count; i++)
+		{
+			for (int j = 0; j < board.Count; j++)
+			{
+				if (isValidMove(color.black, i, j) || isValidMove(color.white, i, j))
+				{
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
 	public string winner(){
 		int b=0;
 		int w=0;
@@ -215,6 +251,7 @@ public class BoardManager : MonoBehaviour
 	}
 	float r=0f;
 	Vector3 aoom;
+
 	private List<GameObject> SomeMethod(float r, Vector3 loc){
 		Collider2D[] a =  Physics2D.OverlapCircleAll(loc, r);
 		aoom = loc;
@@ -229,8 +266,7 @@ public class BoardManager : MonoBehaviour
 	}
 	
 	private void OnDrawGizmos()
-    {
-		
+    {	
         Gizmos.color = Color.red;
         // Gizmos.matrix = Matrix4x4.TRS(this.transform.position, this.transform.rotation, new Vector3(1,1,1));
         // Gizmos.DrawWireCube(this.transform.position, new Vector2(radius, radius));
