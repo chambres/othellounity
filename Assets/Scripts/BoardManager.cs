@@ -195,38 +195,34 @@ public class BoardManager : MonoBehaviour
 
 	public bool validBlack()
 	{
-		bool blackV = false;
-		bool whiteV = false;
 		for (int i = 0; i < board.Count; i++)
 		{
 			for (int j = 0; j < board.Count; j++)
 			{
-				if (isValidMove(color.black, i, j) || isValidMove(color.white, i, j))
+				if (isValidMove(color.black, i, j))
 				{
-					return false;
+					return true;
 				}
 			}
 		}
 
-		return true;
+		return false;
 	}
 
-	public bool validRight()
+	public bool validWhite()
 	{
-		bool blackV = false;
-		bool whiteV = false;
 		for (int i = 0; i < board.Count; i++)
 		{
 			for (int j = 0; j < board.Count; j++)
 			{
-				if (isValidMove(color.black, i, j) || isValidMove(color.white, i, j))
+				if (isValidMove(color.white, i, j))
 				{
-					return false;
+					return true ;
 				}
 			}
 		}
 
-		return true;
+		return false;
 	}
 
 	public string winner(){
@@ -253,7 +249,7 @@ public class BoardManager : MonoBehaviour
 	Vector3 aoom;
 
 	private List<GameObject> SomeMethod(float r, Vector3 loc){
-		Collider2D[] a =  Physics2D.OverlapCircleAll(loc, r);
+		Collider2D[] a =  Physics2D.OverlapBoxAll(loc, new Vector2(r,r), 0f);
 		aoom = loc;
 		List<GameObject> final = new List<GameObject>();
 		for(int i = 0; i < a.Length; i++){
@@ -275,67 +271,94 @@ public class BoardManager : MonoBehaviour
 
 	IEnumerator flip(Vector3 loc){
 		changeMousePiece();
-		for(r = 1.5f; r < 12.5f; r+=1f){
-			
-			
-			
+		for (r = 1.5f; r < 14.5f; r += 1.5f)
+		{
+
+
+
 			List<GameObject> surrounding = SomeMethod(r, loc);
-			
-			
-			
-			
-			for(int obj = 0; obj < surrounding.Count; obj++){
-			
+
+
+
+
+			for (int obj = 0; obj < surrounding.Count; obj++)
+			{
+
 				int x;
 				int y;
-				int.TryParse (Char.ToString(surrounding[obj].name[0]),out x);
-				int.TryParse (Char.ToString(surrounding[obj].name[1]), out y);
-				
+				int.TryParse(Char.ToString(surrounding[obj].name[0]), out x);
+				int.TryParse(Char.ToString(surrounding[obj].name[1]), out y);
+
 				//Debug.Log(x+" "+y);
-				
-				for(int i = 0; i < affectedMovesX.Count; i++){
+
+				for (int i = 0; i < affectedMovesX.Count; i++)
+				{
 					int n = affectedMovesX[i];
 					int m = affectedMovesY[i];
 					//Debug.Log(n+" "+m);
-					
-					
-					if(n == x && y == m){
+
+
+					if (n == x && y == m)
+					{
 						//board[x][y].gameObject.GetComponent<Piece>().();
-						if(state == color.white){
+						if (state == color.white)
+						{
 							board[n][m].gameObject.GetComponent<Piece>().fliptowhite();
 							affectedMovesX.RemoveAt(i);
 							affectedMovesY.RemoveAt(i);
 						}
-						if(state == color.black){
+						if (state == color.black)
+						{
 							board[n][m].gameObject.GetComponent<Piece>().fliptoblack();
 							affectedMovesX.RemoveAt(i);
 							affectedMovesY.RemoveAt(i);
 						}
-						
-						if(affectedMovesX.Count == 0){
-							Debug.Log("done!");changeState();
+
+						if (affectedMovesX.Count == 0)
+						{
+							Debug.Log("done!"); 
+							changeState();
+
+							Debug.Log(validBlack());
+							Debug.Log(validWhite());
+
+							if (validBlack() && !validWhite() && state == color.white)
+							{
+								Debug.Log("nowhite");
+								changeState();
+								mousePiece.GetComponent<Animator>().SetTrigger("black");
+
+							}
+							if (!validBlack() && validWhite() && state == color.black)
+							{
+								
+								Debug.Log("noblack");
+								changeState();
+								mousePiece.GetComponent<Animator>().SetTrigger("white");
+
+							}
+							if (validMovesLeft())
+							{
+								Debug.Log("win");
+								playing = false;
+								wintext.SetActive(true);
+								wintext.GetComponent<Text>().text = winner() + " win!";
+							}
 						}
-					
-						}	
-						//affectedMovesX.RemoveAt(i);
-						//affectedMovesY.RemoveAt(i);
+
 					}
-					
+					//affectedMovesX.RemoveAt(i);
+					//affectedMovesY.RemoveAt(i);
 				}
-				
-				yield return new WaitForSeconds(.2f);
+
+			}
+
+			yield return new WaitForSeconds(.2f);
 		}
-				
-		if(validMovesLeft()){
-					playing=false;
-					wintext.SetActive(true);
-					wintext.GetComponent<Text>().text = winner()+" win!";
-					
-		}		
-				
-				
 
 		
+
+
 		yield return new WaitForSeconds(0f);
 			// for(int i = 0; i < affectedMovesX.Count; i++){
 				// int x = affectedMovesX[i];
@@ -395,12 +418,9 @@ public class BoardManager : MonoBehaviour
 
 		if(state==color.black){
 			mousePiece.GetComponent<Animator>().SetTrigger("white");
-			
-			
 		}
 		else if(state==color.white){
 			mousePiece.GetComponent<Animator>().SetTrigger("black");
-			
 		}
 		
 			
