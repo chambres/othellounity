@@ -51,9 +51,6 @@ public class Piece : MonoBehaviour
 			anim.SetTrigger("black");
 		}
 	}
-	
-	
-	
 	void OnMouseDown(){
 		if(!manager.playing){ return; }
 		string objectName = (string)gameObject.name;
@@ -61,7 +58,9 @@ public class Piece : MonoBehaviour
 		int y;
 		int.TryParse (Char.ToString(objectName[0]),out x);
 		int.TryParse (Char.ToString(objectName[1]), out y);
+
 		if(!manager.isValidMove(manager.state, x, y, transform.position)){ return;}		
+
 		if(sprite.enabled == false){
 			sprite.enabled = true;
 			alreadyPlaced = true;
@@ -69,11 +68,15 @@ public class Piece : MonoBehaviour
 		else{
 			return;
 		}
+
+		Debug.Log(manager.state);
 		if(manager.state == BoardManager.color.white){ 
-			white();	
+			Debug.Log("placing black");
+			black();	
 		}
 		if(manager.state == BoardManager.color.black){ 
-			black();
+			Debug.Log("placing white");
+			white();
 		}
 	}
 	void PlayFlip(){

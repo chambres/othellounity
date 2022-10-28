@@ -130,6 +130,7 @@ public class BoardManager : MonoBehaviour
 		if (board[row][col].gameObject.GetComponent<Piece>().state != color.off){
 			return false;
 		}
+
 		//char oppPiece = (piece == sBLACK_PIECE) ? sWHITE_PIECE : sBLACK_PIECE;
 		color oppPiece = getOppositeColor(c);
 		bool isValid = false;
@@ -166,7 +167,7 @@ public class BoardManager : MonoBehaviour
 				continue;
 		}
 		if(isValid)
-			StartCoroutine(flip(loc));
+			StartCoroutine(flip(loc, row, col));
 		return isValid;
 	}
 	public void playSound(){
@@ -248,16 +249,26 @@ public class BoardManager : MonoBehaviour
 	float r=0f;
 	Vector3 aoom;
 
-	private List<GameObject> SomeMethod(float r, Vector3 loc){
+	private List<GameObject> SomeMethod(float r, Vector3 loc, int row, int col){
 		//Collider2D[] a =  Physics2D.OverlapBoxAll(loc, new Vector2(r,r), 0f);
-		Collider2D[] a = Physics2D.OverlapCircleAll(loc, r);
+		Collider2D[] a = Physics2D.OverlapBoxAll(loc, new Vector2(r, r), 0f);
+		Debug.Log(r);
 		aoom = loc;
 		List<GameObject> final = new List<GameObject>();
-		for(int i = 0; i < a.Length; i++){
+		int o;
+		int p;
+		
 
-			if(a[i].gameObject.transform.position != loc){
-				final.Add(a[i].gameObject);
-			}
+		
+		for(int i = 0; i < a.Length; i++){
+			int.TryParse(Char.ToString(a[i].gameObject.name[0]), out o);
+			int.TryParse(Char.ToString(a[i].gameObject.name[1]), out p);
+				if(!(loc == a[i].gameObject.transform.position)){
+					final.Add(a[i].gameObject);
+				};
+			
+				
+			
 		}
 		return final;
 	}
@@ -267,24 +278,18 @@ public class BoardManager : MonoBehaviour
         Gizmos.color = Color.red;
         // Gizmos.matrix = Matrix4x4.TRS(this.transform.position, this.transform.rotation, new Vector3(1,1,1));
         // Gizmos.DrawWireCube(this.transform.position, new Vector2(radius, radius));
-		Gizmos.DrawWireCube(aoom, new Vector3(r, r, r));
+		Gizmos.DrawWireCube(aoom, new Vector3(r,r, 1));
     }
 
-	IEnumerator flip(Vector3 loc){
+	IEnumerator flip(Vector3 loc, int row, int col){
 
 
 		//changeMousePiece();
+		//Debug.Log(String.Join(",", affectedMovesX));
 
-		for (r = 1.5f; r < 14.5f; r += 1f)
+		for (r = 2.5f; r < 18f; r += 2f)
 		{
-
-
-
-			List<GameObject> surrounding = SomeMethod(r, loc);
-
-
-
-
+			List<GameObject> surrounding = SomeMethod(r, loc, row, col);
 			for (int obj = 0; obj < surrounding.Count; obj++)
 			{
 
@@ -292,6 +297,8 @@ public class BoardManager : MonoBehaviour
 				int y;
 				int.TryParse(Char.ToString(surrounding[obj].name[0]), out x);
 				int.TryParse(Char.ToString(surrounding[obj].name[1]), out y);
+
+					
 
 				//Debug.Log(x+" "+y);
 
@@ -301,9 +308,10 @@ public class BoardManager : MonoBehaviour
 					int m = affectedMovesY[i];
 					//Debug.Log(n+" "+m);
 
-
+					Debug.Log(affectedMovesX.Count);
 					if (n == x && y == m)
 					{
+						
 						//board[x][y].gameObject.GetComponent<Piece>().();
 						if (state == color.white)
 						{
@@ -323,9 +331,6 @@ public class BoardManager : MonoBehaviour
 							Debug.Log("done!"); 
 							changeState();
 
-							Debug.Log(validBlack());
-							Debug.Log(validWhite());
-
 							if (validBlack() && !validWhite() && state == color.white)
 							{
 								Debug.Log("nowhite");
@@ -343,6 +348,7 @@ public class BoardManager : MonoBehaviour
 							}
 							else if (validMovesLeft())
 							{
+								mousePiece.SetActive(false);
 								Debug.Log("win");
 								playing = false;
 								wintext.SetActive(true);
@@ -350,12 +356,12 @@ public class BoardManager : MonoBehaviour
 							}
 							else
 							{
-								Debug.Log("asdf");
 								changeState();
 								Debug.Log(state);
 								changeMousePiece();
 								changeState();
 							}
+						
 							
 							
                             
@@ -368,10 +374,10 @@ public class BoardManager : MonoBehaviour
 
 			}
 
+			
+
 			yield return new WaitForSeconds(.2f);
 		}
-
-		
 
 
 		yield return new WaitForSeconds(0f);
@@ -391,14 +397,12 @@ public class BoardManager : MonoBehaviour
 
 	
 	
-	public GameObject fgh;
 	public OrderCollider o;
 	
     // Start is called before the first frame update
     void Start()
     {
 		wintext.SetActive(false);
-		o = fgh.GetComponent<OrderCollider>();
 		
 		state = color.black;
         board.Add(a); 		board.Add(b); 		board.Add(c); 		board.Add(d); 		board.Add(e); 		board.Add(f); 		board.Add(g); 		board.Add(h);
