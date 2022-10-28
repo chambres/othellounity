@@ -249,7 +249,8 @@ public class BoardManager : MonoBehaviour
 	Vector3 aoom;
 
 	private List<GameObject> SomeMethod(float r, Vector3 loc){
-		Collider2D[] a =  Physics2D.OverlapBoxAll(loc, new Vector2(r,r), 0f);
+		//Collider2D[] a =  Physics2D.OverlapBoxAll(loc, new Vector2(r,r), 0f);
+		Collider2D[] a = Physics2D.OverlapCircleAll(loc, r);
 		aoom = loc;
 		List<GameObject> final = new List<GameObject>();
 		for(int i = 0; i < a.Length; i++){
@@ -270,8 +271,11 @@ public class BoardManager : MonoBehaviour
     }
 
 	IEnumerator flip(Vector3 loc){
-		changeMousePiece();
-		for (r = 1.5f; r < 14.5f; r += 1.5f)
+
+
+		//changeMousePiece();
+
+		for (r = 1.5f; r < 14.5f; r += 1f)
 		{
 
 
@@ -329,7 +333,7 @@ public class BoardManager : MonoBehaviour
 								mousePiece.GetComponent<Animator>().SetTrigger("black");
 
 							}
-							if (!validBlack() && validWhite() && state == color.black)
+							else if (!validBlack() && validWhite() && state == color.black)
 							{
 								
 								Debug.Log("noblack");
@@ -337,13 +341,24 @@ public class BoardManager : MonoBehaviour
 								mousePiece.GetComponent<Animator>().SetTrigger("white");
 
 							}
-							if (validMovesLeft())
+							else if (validMovesLeft())
 							{
 								Debug.Log("win");
 								playing = false;
 								wintext.SetActive(true);
 								wintext.GetComponent<Text>().text = winner() + " win!";
 							}
+							else
+							{
+								Debug.Log("asdf");
+								changeState();
+								Debug.Log(state);
+								changeMousePiece();
+								changeState();
+							}
+							
+							
+                            
 						}
 
 					}
