@@ -5,4 +5,4 @@ read varname
 
 git add .
 git commit -m "$varname"
-git push origin master
+git push origin main
