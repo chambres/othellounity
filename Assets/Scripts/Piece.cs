@@ -12,6 +12,7 @@ public class Piece : MonoBehaviour
 	public BoardManager.color state;
     void Start()
     {
+		setLast = false;
 		sprite = this.GetComponent<SpriteRenderer>();
 		manager = GameObject.Find("Board").GetComponent<BoardManager>();
 		anim = gameObject.GetComponent<Animator>();	
@@ -59,27 +60,44 @@ public class Piece : MonoBehaviour
 		int.TryParse (Char.ToString(objectName[0]),out x);
 		int.TryParse (Char.ToString(objectName[1]), out y);
 
-		if(!manager.isValidMove(manager.state, x, y, transform.position)){ return;}		
-
-		if(sprite.enabled == false){
+		BoardManager.color tmp = manager.state;
+		if(manager.isValidMove(manager.state, x, y, transform.position)){ 
+			
+			if(sprite.enabled == false){
 			sprite.enabled = true;
 			alreadyPlaced = true;
-		}
-		else{
-			return;
-		}
+			}
+			else{
+				return;
+			}
 
-		Debug.Log(manager.state);
-		if(manager.state == BoardManager.color.white){ 
-			Debug.Log("placing black");
-			black();	
-		}
-		if(manager.state == BoardManager.color.black){ 
-			Debug.Log("placing white");
-			white();
-		}
+			Debug.Log(manager.state);
+			if(tmp == BoardManager.color.white){ 
+				Debug.Log("placing black");//white();
+				white();	
+			}
+			if(tmp == BoardManager.color.black){ 
+				Debug.Log("placing white");
+				black();
+			}
+			
+		}		
+
+		
 	}
 	void PlayFlip(){
 		manager.playSound();
+	}
+
+	public bool setLast= true;
+	void PlayFlipEnd(){
+		manager.playSound();
+		if(setLast){
+			Debug.Log("ohno");
+			if (manager.validMovesLeft()){
+				manager.winning();
+			}
+			setLast = false;
+		}
 	}
 }

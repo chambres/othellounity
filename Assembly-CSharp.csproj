@@ -283,11 +283,20 @@
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\PackageCache\com.unity.analytics@3.6.12\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Editor">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Unity.Analytics.Tracker">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -658,8 +667,17 @@
     <Reference Include="Unity.VisualScripting.Flow.Editor">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Purchasing.Common">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Purchasing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
@@ -676,14 +694,26 @@
     <Reference Include="Unity.TextMeshPro">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Purchasing.SecurityStub">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Services.Analytics">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.Services.Analytics.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Analytics.Editor">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.Services.Analytics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
@@ -697,17 +727,35 @@
     <Reference Include="Unity.Rider.Editor">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Analytics">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Analytics.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Services.Core">
-        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+    <Reference Include="UnityEngine.SpatialTracking">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Services.Core">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Services.Core.Analytics">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.SecurityCore">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Codeless">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
@@ -717,6 +765,24 @@
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing.Stores">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEngine.Purchasing.Stores.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Monetization">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEngine.Monetization.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements.Editor">
+        <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
         <HintPath>C:\Users\rahul\Documents\prog\Unity\shape smasher\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
