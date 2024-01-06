@@ -3,7 +3,10 @@ guid: 1f432c9757c53b04281cf639e8aa6175
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mousePiece: {fileID: 8448814503610734949, guid: c85f85974bb2cfd48ba6ed07d28a3f4d, type: 3}
+  - flipSound: {instanceID: 0}
+  - wintext: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
